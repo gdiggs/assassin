@@ -17,4 +17,8 @@ class Kill < ActiveRecord::Base
     t.save!
     self.save!
   end
+  
+  def target
+    Player.find self.target_id
+  end
 end

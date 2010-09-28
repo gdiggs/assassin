@@ -1,0 +1,18 @@
+%h1 
+  Games
+%ul
+  - Game.all.each do |g|
+    %li= g.title
+
+%h1
+  Players
+%ul
+  - Player.all.each do |p|
+    %li= "#{p.name}, #{p.kills.length}"
+
+%h1
+  Kills
+%ul
+  - Kill.all.each do |k|
+    %li= "#{k.player.name} killed #{k.target.name} on #{k.created_at}"
+      
