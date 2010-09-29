@@ -10,7 +10,6 @@ class Player < ActiveRecord::Base
   
   def die!
     self.dead = true
-    self.target_id = nil
     self.save!
   end
   
