@@ -1,0 +1,33 @@
+- @title = "New Game"
+- default_player_amount = 5
+
+.left
+  %h1 New Game
+
+  - form_for :game do |g|
+    %p
+      %label Name:
+      = g.text_field :title
+
+    %p
+      %label Players:
+      = g.text_field :num_players, {:size => 5, :value => default_player_amount}
+      %input.old-number{:type => 'hidden', :value => default_player_amount}
+
+    %h2 Players
+
+    - g.fields_for :players do |players|
+      .players
+        - default_player_amount.times do |i|
+          - players.fields_for "player_#{i}" do |p|
+            .player
+              %label
+                Player
+                %span.player-num= i+1
+                Name:
+              = p.text_field :name
+
+    %input{ :type => 'submit'}
+
+.right.top
+  = render :partial => 'layouts/sidemenu'

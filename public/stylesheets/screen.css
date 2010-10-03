@@ -39,8 +39,8 @@ a, a:visited, a:active {
       list-style: none; }
       #container #content ul li.dead {
         text-decoration: line-through; }
-    #container #content p {
-      margin: 0; }
+    #container #content .player {
+      margin: 20px 0; }
     #container #content .hidden {
       display: none; }
     #container #content .top {
@@ -52,6 +52,8 @@ a, a:visited, a:active {
       width: 100px;
       float: right;
       text-align: right; }
+      #container #content .right p {
+        margin: 0; }
   #container #footer {
     text-align: center;
     color: white;
