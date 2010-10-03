@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= [@title, "assassin."].compact.join(" | ")
+    = stylesheet_link_tag 'screen', :media => 'screen'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin'
+  %body
+    #container
+      #header
+        assassin.
+      #content= yield
+      #footer
+        &copy; 2010 Gordon Diggs
+      

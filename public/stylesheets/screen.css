@@ -1,0 +1,35 @@
+body {
+  background: #c51b09;
+  color: black;
+  text-align: center;
+  font-family: "Droid Sans Mono", arial, serif; }
+
+#container {
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left; }
+  #container #header {
+    color: white;
+    font-size: 100px;
+    margin: 0;
+    padding: 0; }
+  #container #content {
+    background: white;
+    margin: 20px;
+    padding: 0 20px 20px 20px;
+    -moz-border-radius: 45px 10px/20px 45px;
+    border-radius: 45px 20px/20px 45px; }
+    #container #content h1 {
+      font-size: 55px;
+      margin-bottom: 0px; }
+    #container #content h2 {
+      margin: 20px 0 0 0; }
+    #container #content ul {
+      margin: 0; }
+      #container #content ul li.dead {
+        text-decoration: line-through; }
+  #container #footer {
+    text-align: center;
+    color: white;
+    font-size: 14px; }
