@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  template: template0
+  database: assassin-dev
+  pool: 5
+  username: <username>
+  password: <password>
