@@ -10,13 +10,16 @@ class Player < ActiveRecord::Base
   
   def die!
     self.dead = true
-    self.target_id = nil
     self.save!
   end
   
   def target
     if !target_id.nil?
-      Player.find self.target_id
+      p = Player.find self.target_id
+      if p.dead?
+        p = p.target
+      end
+      p
     else
       nil
     end

@@ -10,10 +10,8 @@ class Kill < ActiveRecord::Base
     self.game_id = p.game_id
     self.player_id = player_id
     
-    p.target_id = t.target_id
     t.die!
     
-    p.save!
     t.save!
     self.save!
   end
