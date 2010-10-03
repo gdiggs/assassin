@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
   
   map.resources :games
+  map.resources :kills, :collection => { :new => :post }
   
   # root behavior
   map.root :controller => 'home', :action => :index

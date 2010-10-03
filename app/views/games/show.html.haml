@@ -21,7 +21,7 @@
     %a.log-kill-link{ :href => 'javascript:' } Log Kill
     
   .log-kill.hidden
-    - form_for :kill do |k|
+    - form_for :kill, :url => new_kill_url do |k|
       %label Killer:
       = k.select("player_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
       
@@ -32,7 +32,4 @@
 
 
 .right.top
-  %p 
-    %a New Game
-  %p
-    %a Games
+  = render :partial => 'layouts/sidemenu'
