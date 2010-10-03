@@ -61,4 +61,20 @@
 
   });
 
+  $('.new-game form').live('submit', function(e){
+    e.preventDefault();
+    $form = $(this);
+
+    $.ajax({
+      url: $form.attr('action'),
+      type: 'post',
+      data: $form.serialize(),
+      dataType: 'json',
+      success: function(response){
+        window.location = response.url;
+      }
+    });
+    return false;
+  });
+
 })(jQuery);

@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # Sample resource route with sub-resources:
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
+
   # Sample resource route with more complex sub-resources
   #   map.resources :products do |products|
   #     products.resources :comments
@@ -34,13 +34,13 @@ ActionController::Routing::Routes.draw do |map|
   # map.root :controller => "welcome"
 
   # See how all your routes lay out with "rake routes"
-  
-  map.resources :games
+
+  map.resources :games, :collection => { :create => :post }
   map.resources :kills, :collection => { :new => :post }
-  
+
   # root behavior
   map.root :controller => 'home', :action => :index
-  
+
   # default routes
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
