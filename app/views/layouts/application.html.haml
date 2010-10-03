@@ -4,11 +4,17 @@
     %title= [@title, "assassin."].compact.join(" | ")
     = stylesheet_link_tag 'screen', :media => 'screen'
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Droid+Sans+Mono&subset=latin'
+    = javascript_include_tag 'jquery-1.4.2.min', 'assassin'
   %body
     #container
       #header
         assassin.
       #content= yield
       #footer
-        &copy; 2010 Gordon Diggs
-      
+        &copy; 2010 
+        %a{ :href => 'http://www.gordondiggs.com', :target => '_blank' } Gordon Diggs
+        |
+        %a{:href => 'http://github.com/GordonDiggs/assassin', :target => '_blank' } github project
+        %br
+        assassin is licensed under a 
+        %a{ :href => 'http://creativecommons.org/licenses/by-nc-sa/3.0/', :target => '_blank' } Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.

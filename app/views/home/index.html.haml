@@ -2,7 +2,8 @@
   Games
 %ul
   - Game.all.each do |g|
-    %li= g.title
+    %li
+      %a{ :href => game_url(g) }= g.title
 
 %h1
   Players

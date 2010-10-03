@@ -1,10 +1,38 @@
 - @title = @game.title
 
-%h1= @game.title
+.left
+  %h1= @game.title
 
-%h2
-  Players:
+  %h2
+    Players:
+  
+  %ul
+    - @players.each do |player|
+      %li{ :class => player.dead? ? 'dead' : '' }= player.name
+      
+  %h2
+    Kills
+  
+  %ul
+    - @kills.each do |kill|
+      %li= kill
 
-%ul
-  - @players.each do |player|
-    %li{ :class => player.dead? ? 'dead' : '' }= player.name
+  %p.top
+    %a.log-kill-link{ :href => 'javascript:' } Log Kill
+    
+  .log-kill.hidden
+    - form_for :kill do |k|
+      %label Killer:
+      = k.select("player_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
+      
+      %label Target:
+      = k.select("target_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
+      
+      %input{:type => 'submit'}
+
+
+.right.top
+  %p 
+    %a New Game
+  %p
+    %a Games

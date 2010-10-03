@@ -3,6 +3,8 @@ class Player < ActiveRecord::Base
   has_many :kills
   
   validates_presence_of :game_id
+  
+  named_scope :not_dead, :conditions => { :dead => false }
 
   def dead?
     self.dead

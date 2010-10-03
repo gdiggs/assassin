@@ -19,4 +19,8 @@ class Kill < ActiveRecord::Base
   def target
     Player.find self.target_id
   end
+
+  def to_s
+    "#{self.player.name} killed #{self.target.name} on #{self.created_at.strftime('%A %b %d at %I:%M %p EDT')}"
+  end
 end
