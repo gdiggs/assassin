@@ -3,35 +3,38 @@
 .left
   %h1= @game.title
 
-  %h2
-    Players:
+  - if @game.matched?
+    %h2
+      Players:
   
-  %ul
-    - @players.each do |player|
-      %li{ :class => player.dead? ? 'dead' : '' }
-        = player.name
-        - unless player.dead?
-          &rarr;
-          = player.target.nil? ? "No one" : player.target.name
-  %h2
-    Kills
+    %ul
+      - @players.each do |player|
+        %li{ :class => player.dead? ? 'dead' : '' }
+          = player.name
+          - unless player.dead?
+            &rarr;
+            = player.target.nil? ? "No one" : player.target.name
+    %h2
+      Kills
   
-  %ul
-    - @kills.each do |kill|
-      %li= kill
+    %ul
+      - @kills.each do |kill|
+        %li= kill
 
-  %p.top
-    %a.log-kill-link{ :href => 'javascript:' } Log Kill
+    %p.top
+      %a.log-kill-link{ :href => 'javascript:' } Log Kill
     
-  .log-kill.hidden
-    - form_for :kill, :url => new_kill_url do |k|
-      %label Killer:
-      = k.select("player_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
+    .log-kill.hidden
+      - form_for :kill, :url => new_kill_url do |k|
+        %label Killer:
+        = k.select("player_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
       
-      %label Target:
-      = k.select("target_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
+        %label Target:
+        = k.select("target_id", @players.not_dead.collect {|p| [ p.name, p.id ] })
       
-      %input{:type => 'submit'}
+        %input{:type => 'submit'}
+  - else
+    %p Players are still being matched for this game. Please refresh this page.
 
 
 .right.top

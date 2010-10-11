@@ -13,7 +13,11 @@ class MatchPlayersJob
       players[i].target_id = t.id
       players[i].save!
     end
-        
+    
+    # if we're here, game is all good
+    game.matched = true
+    game.save!
+    
     rescue ActiveRecord::RecordInvalid => e
       Rails.logger.debug("**** k, error, #{e}")
       perform(game_id) && return

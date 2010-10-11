@@ -6,13 +6,10 @@ class Game < ActiveRecord::Base
   
   # match players with their targets
   def match_players
-    Resque.enqueue(MatchPlayersJob, self.id)
+    Resque.enqueue(MatchPlayersJob, self.id) unless self.matched?
+  end
+  
+  def matched?
+    !!self.matched
   end
 end
-
-
-# if killer == targets[killer]
-#   puts "#{killer} has him/herself"
-# elsif targets.index(killer) == target
-#   puts "#{killer} has #{target} and #{target} has #{killer}"
-# end

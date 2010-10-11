@@ -9,15 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928024512) do
+ActiveRecord::Schema.define(:version => 20101011230320) do
 
   create_table "games", :force => true do |t|
     t.string   "title"
     t.boolean  "over",       :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "matched",    :default => false
   end
 
+  add_index "games", ["matched"], :name => "index_games_on_matched"
   add_index "games", ["over"], :name => "index_games_on_over"
   add_index "games", ["title"], :name => "index_games_on_title"
 
