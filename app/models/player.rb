@@ -4,6 +4,8 @@ class Player < ActiveRecord::Base
   
   validates_presence_of :game_id
   
+  validate :validate_target
+  
   named_scope :not_dead, :conditions => { :dead => false }
 
   def dead?
@@ -26,4 +28,14 @@ class Player < ActiveRecord::Base
       nil
     end
   end
+  
+  private
+    def validate_target
+      Rails.logger.debug("****** target_valid?")
+      if self.target.eql?(self)
+        errors.add("target", "Cannot have self #{self.id}")
+      elsif !self.target.nil? && self.target.target.eql?(self)
+        errors.add("target", "Cannot have each other #{self.id}, #{self.target_id}")
+      end
+    end
 end

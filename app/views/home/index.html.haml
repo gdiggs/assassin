@@ -1,19 +1,22 @@
-%h1 
-  Games
-%ul
-  - Game.all.each do |g|
-    %li
-      %a{ :href => game_url(g) }= g.title
+.left
+  %h1 
+    Games
+  %ul
+    - Game.all.each do |g|
+      %li
+        %a{ :href => game_url(g) }= g.title
 
-%h1
-  Players
-%ul
-  - Player.all.each do |p|
-    %li= "#{p.name}, #{p.kills.length}"
+  %h1
+    Players
+  %ul
+    - Player.all.each do |p|
+      %li= "#{p.name}, #{p.kills.length}"
 
-%h1
-  Kills
-%ul
-  - Kill.all.each do |k|
-    %li= "#{k.player.name} killed #{k.target.name} on #{k.created_at}"
-      
+  %h1
+    Kills
+  %ul
+    - Kill.all.each do |k|
+      %li= "#{k.player.name} killed #{k.target.name} on #{k.created_at}"
+
+.right.top
+  = render :partial => 'layouts/sidemenu'

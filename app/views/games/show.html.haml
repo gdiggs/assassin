@@ -8,8 +8,11 @@
   
   %ul
     - @players.each do |player|
-      %li{ :class => player.dead? ? 'dead' : '' }= player.name
-      
+      %li{ :class => player.dead? ? 'dead' : '' }
+        = player.name
+        - unless player.dead?
+          &rarr;
+          = player.target.nil? ? "No one" : player.target.name
   %h2
     Kills
   
