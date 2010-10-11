@@ -6,17 +6,7 @@ class Game < ActiveRecord::Base
   
   # match players with their targets
   def match_players
-    targets = self.players.shuffle
-    Rails.logger.debug("****** MATCHING #{self.players.count} PLAYERS")
-    Rails.logger.debug("****** Targets:")
-    targets.each_with_index do |t, i|
-      self.players[i].target_id = t.id
-      self.players[i].save!
-    end
-    
-    rescue ActiveRecord::RecordInvalid => e
-      Rails.logger.debug("**** k, error, #{e}")
-      self.match_players && return
+    Resque.enqueue(MatchPlayersJob, self.id)
   end
 end
 
