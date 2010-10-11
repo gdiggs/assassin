@@ -8,6 +8,8 @@ class GamesController < ApplicationController
       p.save!
     end
 
+    game.match_players
+    
     render :json => { :url => game_url(game) }
   end
 

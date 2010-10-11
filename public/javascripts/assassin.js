@@ -14,7 +14,7 @@
       data: $form.serialize(),
       dataType: 'json',
       success: function(){
-        alert("oh yeah");
+        window.location.reload();
       }
     });
 
