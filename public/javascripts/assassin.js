@@ -38,6 +38,8 @@
       for(i=0; i<newValue-oldValue; i++){
         // update the new one and append it
         $toAppend.find('.player-num').html(oldValue+i+1);
+        $toAppend.attr('name', 'game[players][player_'+ parseInt(oldValue+i+1) +'][name]');
+        $toAppend.find("input").attr('name', 'game[players][player_'+ parseInt(oldValue+i+1) +'][name]').attr('id', 'game_players_player_'+ parseInt(oldValue+i+1) +'_name');
         $toAppend.clone().appendTo('.players');
         $('.player').slideDown(200);
       }
