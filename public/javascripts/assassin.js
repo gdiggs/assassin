@@ -85,7 +85,7 @@
       $(this).removeClass('on').html("Show Player Tree");
     } else {
       $('.player-tree').slideDown(200);
-      $(this).addClass('on').html("Hide Player Yree");
+      $(this).addClass('on').html("Hide Player Tree");
     }
   });
 
