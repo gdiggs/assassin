@@ -11,13 +11,17 @@
       - @players.each do |player|
         %li{ :class => player.dead? ? 'dead' : '' }
           = player.name
-          - unless player.dead?
-            &rarr;
-            = player.target.nil? ? "No one" : player.target.name
+    
+    %h2 Player Tree
+    
+    .player-tree-container
+      %a.show-player-tree{:href => 'javascript:'} Show Player Tree
+    
+      .player-tree.hidden= display_player_tree
     
     %h2
       Kills
-  
+
     %ul
       - @kills.each do |kill|
         %li= kill

@@ -78,5 +78,15 @@
     });
     return false;
   });
+  
+  $('.show-player-tree').live('click', function(){
+    if($(this).is('.on')){
+      $('.player-tree').slideUp(200);
+      $(this).removeClass('on').html("Show Player Tree");
+    } else {
+      $('.player-tree').slideDown(200);
+      $(this).addClass('on').html("Hide Player Yree");
+    }
+  });
 
 })(jQuery);
